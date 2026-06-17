@@ -191,7 +191,16 @@ def build_vector_pipeline():
             
             true_intent = ""
             try:
-                payload = {"model": args.model, "prompt": prompt, "stream": args.verbose}
+                payload = {
+                    "model": args.model, 
+                    "prompt": prompt, 
+                    "stream": args.verbose,
+                    "options": {
+                        "num_ctx": 16384,
+                        "temperature": 0.0,
+                        "num_predict": 512
+                    }
+                }
                 res = requests.post(url, json=payload, stream=args.verbose, timeout=120)
                 res.raise_for_status()
                 

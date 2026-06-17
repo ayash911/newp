@@ -23,7 +23,7 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(filename)s: %(message)s"
 )
 
-MAX_TOKENS_BUDGET = 8000
+MAX_TOKENS_BUDGET = 24000
 
 def estimate_tokens(text: str) -> int:
     """Estimates the number of tokens in a string based on character count (1 token ≈ 4 characters)."""
@@ -266,11 +266,12 @@ Query: {user_query}
                 res = requests.post(
                     url, 
                     json={
-                        "model": "gemma4:12b", 
+                        "model": "gemma3:12b", 
                         "prompt": prompt, 
                         "stream": True,
                         "options": {
-                            "num_ctx": 16384
+                            "num_ctx": 32768,
+                            "temperature": 0.2
                         }
                     }, 
                     stream=True, 
