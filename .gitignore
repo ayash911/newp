@@ -1,0 +1,18 @@
+# Environment
+venv/
+.env
+
+# Chroma Database (Large, should not be tracked by Git)
+chroma_db/
+
+# Generated manifest & logs
+repo_manifest.json
+rag_pipeline.log
+
+# Python Caches & System Files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.DS_Store
