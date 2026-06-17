@@ -36,6 +36,7 @@ def build_vector_pipeline():
     parser.add_argument("--limit", type=int, help="Limit the number of code modules to process")
     parser.add_argument("--force", action="store_true", help="Force rebuild of all summaries, ignoring cache")
     parser.add_argument("--url", type=str, default="http://localhost:11434/api/generate", help="Ollama API generation endpoint URL")
+    parser.add_argument("--model", type=str, default="gemma4:12b", help="Ollama model name to use")
     args = parser.parse_args()
 
     console = Console()
@@ -190,7 +191,7 @@ def build_vector_pipeline():
             
             true_intent = ""
             try:
-                payload = {"model": "gemma4:12b", "prompt": prompt, "stream": args.verbose}
+                payload = {"model": args.model, "prompt": prompt, "stream": args.verbose}
                 res = requests.post(url, json=payload, stream=args.verbose, timeout=120)
                 res.raise_for_status()
                 
