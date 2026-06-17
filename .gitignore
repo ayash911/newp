@@ -2,8 +2,7 @@
 venv/
 .env
 
-# Chroma Database (Large, should not be tracked by Git)
-chroma_db/
+# Chroma Database (Tracked for RAG cache sharing across local & Kaggle)
 
 # Generated manifest & logs
 repo_manifest.json
